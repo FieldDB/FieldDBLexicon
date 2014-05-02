@@ -1,4 +1,146 @@
-.lexicon-data {
-  width:100%;
-  min-height: 10em;
+.fielddb-lexicon-data {
+	width: 100%;
+	resize: auto !important;
+	height: 20em;
+}
+
+.fielddb-lexicon ul{
+	list-style-type: none;
+	clear: both;
+	margin: auto;
+	/*border: 1px solid white !important;*/
+}
+
+.fielddb-lexicon ul li {
+	float: left;
+	padding: 0.5em;
+	margin: 0.5em;
+	border:2px solid black !important;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	width: 20em;
+}
+
+.fielddb-lexicon.node_details_tooltip {
+	padding: 0.5em;
+	margin: 0.5em;
+	border:2px solid black !important;
+	border-radius: 10px;
+	width: 20em;
+	background-color: #333;
+	opacity: 0.8;
+}
+
+.fielddb-lexicon-data {
+	width: 100%;
+	resize: auto !important;
+	height: 20em;
+}
+
+.fielddb-lexicon .discussion {
+	font-style: italic;
+	margin-right: 0.2em;
+}
+
+.fielddb-lexicon .utteranceContext {
+	font-style: italic;
+}
+
+.fielddb-lexicon .headword {
+	font-weight: bold;
+	padding-right: 0.2em;
+}
+
+.fielddb-lexicon dl {
+	width: 100%;
+	overflow: hidden;
+}
+
+/*
+dd:nth-of-type(odd) {   background-color: #333}
+dl:nth-of-type(odd) {  background-color: #ccc }​*/
+
+
+.fielddb-lexicon dt span{
+	padding: 0;
+	margin: 0;
+	float:left;
+	width:40%; 
+	color: #ccc;
+}
+
+.fielddb-lexicon dd span{
+	padding: 0;
+	margin: 0;
+	float:left;
+	width:55%; 
+}
+
+.fielddb-lexicon-utterance {
+	color: #ccc;
+	background-color: #323245;
+}
+
+.fielddb-lexicon-morphemes {
+	color: #ccc;
+	background-color: #353535;
+}
+
+.fielddb-lexicon-gloss {
+	color: #ccfcfc;
+	background-color: #232323;
+}
+
+.fielddb-lexicon-confidence {
+	color: #999;
+	background-color: #454545;
+}
+
+.fielddb-lexicon [contenteditable="true"]:focus{
+	color: #fff;
+}
+
+/* D3 force directed graph */
+.fielddb-lexicon circle.node {
+	stroke: #fff;
+	stroke-width: 1.5px;
+}
+
+.fielddb-lexicon line.link {
+	stroke-opacity: .6;
+}
+
+
+.fielddb-lexicon.link {
+	fill: none;
+	stroke: #666;
+	stroke-width: 1.5px;
+}
+
+.fielddb-lexicon #licensing {
+	fill: green;
+}
+
+.link.licensing {
+	stroke: green;
+}
+
+.link.resolved {
+	stroke-dasharray: 0,2 1;
+}
+
+circle {
+	fill: #ccc;
+	stroke: #333;
+	stroke-width: 1.5px;
+}
+
+
+.fielddb-lexicon.distance2{
+	opacity: 0.2;
+}
+
+
+.fielddb-lexicon.distance3{
+	opacity: 0.1;
 }

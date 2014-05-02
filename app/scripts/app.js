@@ -7,11 +7,11 @@ angular
     'ngSanitize',
     'ngRoute'
   ])
-  .config(function ($routeProvider) {
+  .config(function($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        templateUrl: 'views/sample.html',
+        controller: 'LexiconController'
       })
       .otherwise({
         redirectTo: '/'

@@ -12,16 +12,15 @@ Sample use of the lexicon directives.
   <tr>
     <td colspan="2">
       <h2>{{corpus.pouchname}}</h2>
-      <div data-fielddb-lexicon-connected-graph class="lexicon-connected-graph" corpus={{corpus}}></div>
-      <div id="glosser"></div>
-      <div data-fielddb-lexicon-nodes class="lexicon-nodes" corpus={{corpus}}>  
-      <div id="lexicon">  
-      </div>
+      <div class="fielddb-lexicon" data-fielddb-lexicon-connected-graph class="lexicon-connected-graph" json="corpus"></div>
+      <div class="fielddb-lexicon" id="glosser"></div>
+      <div class="fielddb-lexicon" data-fielddb-lexicon-nodes class="lexicon-nodes" json="corpus"></div>
+      <div class="fielddb-lexicon" id="lexicon"></div>
     </td>
   </tr>
   <tr>
     <td colspan="2">
-      <div data-fielddb-lexicon-data corpus={{corpus}} placeholder="Lexicon raw data">
+      <div data-fielddb-lexicon-data json="corpus" placeholder="Lexicon raw data">
       </div>
     </td>
   </tr>
