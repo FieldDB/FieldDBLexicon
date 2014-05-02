@@ -21,6 +21,8 @@ gen
 docs/javascript
 fielddb.js
 fielddb.min.js
+dist
+.tmp
 
 # Node #
 ########

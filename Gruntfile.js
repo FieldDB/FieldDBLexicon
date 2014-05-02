@@ -1,4 +1,4 @@
-// Generated on 2014-05-02 using generator-angular 0.8.0
+// Generated on 2014-04-25 using generator-angular 0.8.0
 'use strict';
 
 // # Globbing
@@ -7,7 +7,7 @@
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
 
-module.exports = function (grunt) {
+module.exports = function(grunt) {
 
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
@@ -33,9 +33,10 @@ module.exports = function (grunt) {
       },
       js: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
-        tasks: ['newer:jshint:all'],
+        // tasks: ['newer:jshint:all'],
+        tasks: ['build'],
         options: {
-          livereload: true
+          livereload: 35725
         }
       },
       jsTest: {
@@ -64,10 +65,10 @@ module.exports = function (grunt) {
     // The actual grunt server settings
     connect: {
       options: {
-        port: 9000,
+        port: 9004,
         // Change this to '0.0.0.0' to access the server from outside.
         hostname: 'localhost',
-        livereload: 35729
+        livereload: 35724
       },
       livereload: {
         options: {
@@ -222,20 +223,20 @@ module.exports = function (grunt) {
       }
     },
 
-    htmlmin: {
-      dist: {
-        options: {
-          collapseWhitespace: true,
-          collapseBooleanAttributes: true,
-          removeCommentsFromCDATA: true,
-          removeOptionalTags: true
+    ngtemplates: {
+      app: {
+        options : {
+          htmlmin: {
+            collapseWhitespace: true,
+            collapseBooleanAttributes: true,
+            removeCommentsFromCDATA: true,
+            removeOptionalTags: true
+          },
+          module: 'fielddbLexiconAngularApp',
         },
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.dist %>',
-          src: ['*.html', 'views/{,*/}*.html'],
-          dest: '<%= yeoman.dist %>'
-        }]
+        cwd: 'app',
+        src: 'views/**.html',
+        dest: 'dist/scripts/templates.js'
       }
     },
 
@@ -342,7 +343,7 @@ module.exports = function (grunt) {
   });
 
 
-  grunt.registerTask('serve', function (target) {
+  grunt.registerTask('serve', function(target) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'connect:dist:keepalive']);
     }
@@ -357,7 +358,7 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('server', function (target) {
+  grunt.registerTask('server', function(target) {
     grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
     grunt.task.run(['serve:' + target]);
   });
@@ -382,9 +383,10 @@ module.exports = function (grunt) {
     'cdnify',
     'cssmin',
     'uglify',
-    'rev',
-    'usemin',
-    'htmlmin'
+    'ngtemplates',
+    // 'rev',
+    'usemin'
+    // 'htmlmin'
   ]);
 
   grunt.registerTask('default', [
