@@ -1,0 +1,31 @@
+
+<label class="">
+  Re-train:
+</label>
+<button id="refreshButton" class="fa fa-refresh"></button>
+
+
+<label class="">
+  Auto save and Re-train on edits:
+</label>
+<input type="checkbox" id="autoSaveAndReTrain" class="switch"/>
+
+
+<label class="">
+  Precedence Graph:
+</label>
+<input type="checkbox" id="showGlosserAsGraph" checked class="switch"/>
+
+<label class="">
+  Lexicon Node List:
+</label>
+<input type="checkbox" id="showLexiconAsList" checked class="switch"/>
+
+<label class="" title="This can help see the linear/template order of morphemes, rather than which morphemes are over-represented in the corpus.">
+  Graph Word Boundaries:
+</label>
+<input type="checkbox" id="graphWordBoundaries" class="switch"/>
+
+
+<label class="topcoat" title="Lexicon nodes below the threshold wont be shown">Confidence cut-off:</label>
+<input id="lexiconConfidenceThreshold" type="range" min="1" max="10" value="5"/>
