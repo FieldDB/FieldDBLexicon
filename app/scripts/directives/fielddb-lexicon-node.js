@@ -4,7 +4,7 @@ angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconNode', funct
   return {
     template: '<div></div>',
     restrict: 'A',
-    transclude: true,
+    transclude: false,
     scope: {
       data: '=json'
     },

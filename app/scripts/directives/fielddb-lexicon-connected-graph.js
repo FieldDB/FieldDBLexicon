@@ -4,7 +4,7 @@ angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconConnectedGra
   return {
     template: '<div></div>',
     restrict: 'A',
-    transclude: true,
+    transclude: false,
     scope: {
       data: '=json'
     },
@@ -30,7 +30,7 @@ angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconConnectedGra
           dontConnectWordBoundaries: !scope.showWordBoundaries
         });
         scope.data.lexicon = lexicon;
-        // lexicon.bindToView();
+        lexicon.bindToView();
         var renderFirstGraph = function() {
           var glosserElement = document.getElementById("glosser");
           glosserElement.innerHTML = "";

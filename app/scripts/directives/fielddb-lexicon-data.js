@@ -4,7 +4,7 @@ angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconData', funct
   return {
     templateUrl: 'views/data.html',
     restrict: 'A',
-    transclude: true,
+    transclude: false,
     scope: {
       data: '=json'
     },
