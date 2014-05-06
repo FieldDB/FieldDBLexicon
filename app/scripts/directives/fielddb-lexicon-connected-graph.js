@@ -9,12 +9,15 @@ angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconConnectedGra
       data: '=json'
     },
     link: function postLink(scope, element, attrs) {
+      if(!scope.data || !scope.data.dbname){
+        return;
+      }
       scope.lexiconConfidenceThreshold = 10;
-      console.log("scopedata", scope.data);
+      // console.log("scopedata", scope.data);
       var firstGlosser = new Glosser({
-        pouchname: scope.data.pouchname
+        dbname: scope.data.dbname
       });
-      firstGlosser.downloadPrecedenceRules(scope.data.pouchname, "http://localhost:5984/" + scope.data.pouchname + "/_design/lexicon/_view/morphemesPrecedenceContext?group=true", function(precedenceRelations) {
+      firstGlosser.downloadPrecedenceRules(scope.data.dbname, "http://localhost:5984/" + scope.data.dbname + "/_design/lexicon/_view/morphemesPrecedenceContext?group=true", function(precedenceRelations) {
         var utterance = firstGlosser.guessUtteranceFromMorphemes({
           utterance: "",
           morphemes: "Kicha-nay-wa-n punqo-ta",
@@ -25,7 +28,7 @@ angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconConnectedGra
         console.log(utterance);
         var lexicon = LexiconFactory({
           precedenceRelations: precedenceRelations,
-          dbname: scope.data.pouchname,
+          dbname: scope.data.dbname,
           element: document.getElementById("lexicon"),
           dontConnectWordBoundaries: !scope.showWordBoundaries
         });
