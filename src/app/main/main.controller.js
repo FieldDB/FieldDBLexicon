@@ -23,6 +23,8 @@
       }, 4000);
     }
 
+    iLanguageCloud({orthography: 'A cloud is a visible mass ...'}).render();
+
     function showToastr() {
       toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
       vm.classAnimation = '';
