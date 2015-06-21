@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('wordCloudCleaner')
+    .module('fielddbLexiconAngularApp')
     .config(routeConfig);
 
   function routeConfig($routeProvider) {

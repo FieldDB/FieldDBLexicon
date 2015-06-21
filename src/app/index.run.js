@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('wordCloudCleaner')
+    .module('fielddbLexiconAngularApp')
     .run(runBlock);
 
   /** @ngInject */

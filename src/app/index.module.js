@@ -2,6 +2,6 @@
   'use strict';
 
   angular
-    .module('wordCloudCleaner', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngRoute', 'mgcrea.ngStrap']);
+    .module('fielddbLexiconAngularApp', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngRoute', 'mgcrea.ngStrap']);
 
 })();

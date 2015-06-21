@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('wordCloudCleaner')
+    .module('fielddbLexiconAngularApp')
     .directive('acmeMalarkey', acmeMalarkey);
 
   /** @ngInject */

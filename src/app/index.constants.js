@@ -3,7 +3,7 @@
   'use strict';
 
   angular
-    .module('wordCloudCleaner')
+    .module('fielddbLexiconAngularApp')
     .constant('malarkey', malarkey)
     .constant('toastr', toastr)
     .constant('moment', moment);
