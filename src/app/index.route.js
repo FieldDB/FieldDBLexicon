@@ -1,10 +1,6 @@
 (function() {
   'use strict';
 
-  angular
-    .module('fielddbLexiconAngularApp')
-    .config(routeConfig);
-
   function routeConfig($routeProvider) {
     $routeProvider
       .when('/', {
@@ -16,5 +12,9 @@
         redirectTo: '/'
       });
   }
+
+  angular
+    .module('fielddbLexiconAngularApp')
+    .config(routeConfig);
 
 })();

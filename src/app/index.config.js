@@ -1,10 +1,6 @@
 (function() {
   'use strict';
 
-  angular
-    .module('fielddbLexiconAngularApp')
-    .config(config);
-
   /** @ngInject */
   function config($logProvider, toastr) {
     // Enable log
@@ -16,5 +12,9 @@
     toastr.options.preventDuplicates = true;
     toastr.options.progressBar = true;
   }
+
+  angular
+    .module('fielddbLexiconAngularApp')
+    .config(config);
 
 })();

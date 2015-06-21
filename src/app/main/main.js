@@ -7,7 +7,7 @@ angular.module('fielddbLexiconAngularApp').controller('LexiconController', funct
     'Karma'
   ];
   $scope.corpus = {
-    pouchname: "glossersample-quechua"
+    pouchname: 'glossersample-quechua'
   };
 
 });
