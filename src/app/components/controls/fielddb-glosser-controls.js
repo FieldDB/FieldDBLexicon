@@ -2,7 +2,7 @@
 
 angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconControls', function() {
   return {
-    templateUrl: 'views/controls.html',
+    templateUrl: 'app/components/controls/controls.html',
     restrict: 'A',
     transclude: false,
     scope: {
