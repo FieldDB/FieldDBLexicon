@@ -3,7 +3,6 @@
   'use strict';
 
   angular
-    .module('fielddbLexiconAngularApp')
-    .constant('moment', moment);
+    .module('fielddbLexiconAngularApp');
 
 })();
