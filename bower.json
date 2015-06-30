@@ -12,8 +12,8 @@
     "angular-strap": "~2.2.4",
     "animate.css": "~3.3.0",
     "angular": "~1.4.0",
-    "ilanguage-cloud": "~3.0.1",
-    "fielddb-glosser": "~2.2.0"
+    "ilanguage-cloud-angular": "git://github.com/iLanguage/iLanguageCloudChrome.git",
+    "fielddb-glosser": "git://github.com/OpenSourceFieldlinguistics/FieldDBGlosser.git"
   },
   "main": "dist/scripts.js",
   "devDependencies": {
