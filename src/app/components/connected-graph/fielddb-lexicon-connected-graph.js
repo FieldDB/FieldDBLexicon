@@ -15,9 +15,10 @@ angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconConnectedGra
       scope.lexiconConfidenceThreshold = 10;
       // console.log("scopedata", scope.data);
       var firstGlosser = new Glosser({
-        dbname: scope.data.dbname
+        dbname: scope.data.dbname,
+        localDocument: document
       });
-      firstGlosser.downloadPrecedenceRules(scope.data.dbname, "http://localhost:5984/" + scope.data.dbname + "/_design/lexicon/_view/morphemesPrecedenceContext?group=true", function(precedenceRelations) {
+      firstGlosser.downloadPrecedenceRules(scope.data.dbname, "http://localhost:5984/" + scope.data.dbname + "/_design/lexicon/_view/morphemesPrecedenceContext?group=true&limit=300", function(precedenceRelations) {
         var utterance = firstGlosser.guessUtteranceFromMorphemes({
           utterance: "",
           morphemes: "Kicha-nay-wa-n punqo-ta",
@@ -38,7 +39,7 @@ angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconConnectedGra
           var glosserElement = document.getElementById("glosser");
           glosserElement.innerHTML = "";
           var confidenceThreshold = scope.lexiconConfidenceThreshold / 10;
-          firstGlosser.visualizePrecedenceRelationsAsForceDirectedGraph(lexicon, glosserElement, !scope.showWordBoundaries, confidenceThreshold);
+          firstGlosser.visualizePrecedenceRelationsAsForceDirectedGraph(lexicon, glosserElement, false, 0.1);
         };
         // rerenderIfWordBoundariesChange.push(renderFirstGraph);
         renderFirstGraph();
