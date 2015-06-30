@@ -111,7 +111,7 @@ dl:nth-of-type(odd) {  background-color: #ccc }​*/
 }
 
 
-.fielddb-lexicon.link {
+.fielddb-lexicon .link {
 	fill: none;
 	stroke: #666;
 	stroke-width: 1.5px;
@@ -121,26 +121,26 @@ dl:nth-of-type(odd) {  background-color: #ccc }​*/
 	fill: green;
 }
 
-.link.licensing {
+.fielddb-lexicon .link.licensing {
 	stroke: green;
 }
 
-.link.resolved {
+.fielddb-lexicon .link.resolved {
 	stroke-dasharray: 0,2 1;
 }
 
-circle {
+.fielddb-lexicon circle {
 	fill: #ccc;
 	stroke: #333;
 	stroke-width: 1.5px;
 }
 
 
-.fielddb-lexicon.distance2{
+.fielddb-lexicon .distance2{
 	opacity: 0.2;
 }
 
 
-.fielddb-lexicon.distance3{
+.fielddb-lexicon .distance3{
 	opacity: 0.1;
 }
