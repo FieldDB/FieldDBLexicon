@@ -1,4 +1,4 @@
-.fielddb-lexicon-data {
+.fielddb-lexicon .data {
 	width: 100%;
 	resize: auto !important;
 	height: 20em;
@@ -29,12 +29,6 @@
 	width: 20em;
 	background-color: #333;
 	opacity: 0.8;
-}
-
-.fielddb-lexicon-data {
-	width: 100%;
-	resize: auto !important;
-	height: 20em;
 }
 
 .fielddb-lexicon .discussion {
@@ -76,22 +70,22 @@ dl:nth-of-type(odd) {  background-color: #ccc }​*/
 	width:55%; 
 }
 
-.fielddb-lexicon-utterance {
+.fielddb-lexicon .utterance {
 	color: #ccc;
 	background-color: #323245;
 }
 
-.fielddb-lexicon-morphemes {
+.fielddb-lexicon .morphemes {
 	color: #ccc;
 	background-color: #353535;
 }
 
-.fielddb-lexicon-gloss {
+.fielddb-lexicon .gloss {
 	color: #ccfcfc;
 	background-color: #232323;
 }
 
-.fielddb-lexicon-confidence {
+.fielddb-lexicon .confidence {
 	color: #999;
 	background-color: #454545;
 }
