@@ -6,7 +6,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/css/topcoat-desktop-light.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../bower_components/fielddb-angular/dist/styles/vendor.css" />
+
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
@@ -26,8 +27,30 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="container-fluid" ng-view></div>
+  <div ng-include="'components/navbar/navbar.html'"></div>
 
+    <div class="scrollable">
+     <div class="debugging-switch">
+         <input type="checkbox" name="debugging-switch" class="debugging-switch-checkbox" id="mydebugging-switch" ng-model="application.debugMode">
+         <label class="debugging-switch-label" for="mydebugging-switch">
+             <span class="debugging-switch-inner"></span>
+             <span class="debugging-switch-switch"></span>
+         </label>
+     </div>
+    
+    <p ng-show="application.debugMode">
+      <pre >{{application.routeParams}}</pre>
+      <pre ng-show="application.warnMessages">{{application.warnMessages}}</pre>
+      <pre ng-show="application.bugMessages">{{application.bugMessages}}</pre>
+    </p>
+    </div>
+    <div ui-view></div>
+
+    <hr>
+
+    <div class="footer">
+      <p>With ♥ from <a href="https://twitter.com/LingSync">@LingSync</a> <p>
+    </div>
     <!-- Google Analytics: change UA-35422317-1 to be your site's ID -->
      <script>
        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -39,7 +62,6 @@
        ga('set', 'page', 'lexicon-browser' + window.location.href.replace(window.location.protocol, "").replace(/^\//,""));
        ga('send', 'pageview');
     </script>
-    
     <!-- build:js(src) scripts/vendor.js -->
     <!-- bower:js -->
     <!-- run `gulp inject` to automatically populate bower script dependencies -->
