@@ -21,7 +21,7 @@ angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconConnectedGra
       firstGlosser.downloadPrecedenceRules(scope.data.dbname,
         "http://localhost:5984/" +
         scope.data.dbname +
-        "/_design/lexicon/_view/morphemesPrecedenceContext?group=true&limit=2400",
+        "/_design/lexicon/_view/morphemesPrecedenceContext?group=true&limit=400",
         function(precedenceRelations) {
           var utterance = firstGlosser.guessUtteranceFromMorphemes({
             utterance: "",
@@ -35,7 +35,8 @@ angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconConnectedGra
             precedenceRelations: precedenceRelations,
             dbname: scope.data.dbname,
             element: document.getElementById("lexicon"),
-            dontConnectWordBoundaries: !scope.showWordBoundaries
+            dontConnectWordBoundaries: !scope.showWordBoundaries,
+            localDOM: document
           });
           scope.data.lexicon = lexicon;
           lexicon.bindToView();
