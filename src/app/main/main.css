@@ -43,6 +43,7 @@
 .fielddb-lexicon .headword {
 	font-weight: bold;
 	padding-right: 0.2em;
+	color: black;
 }
 
 .fielddb-lexicon dl {
@@ -91,7 +92,8 @@ dl:nth-of-type(odd) {  background-color: #ccc }​*/
 }
 
 .fielddb-lexicon [contenteditable="true"]:focus{
-	color: #fff;
+	color: black;
+	background-color: white;
 }
 
 /* D3 force directed graph */
