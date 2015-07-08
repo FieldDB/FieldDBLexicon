@@ -58,7 +58,7 @@
 
 /*
 dd:nth-of-type(odd) {   background-color: #333}
-dl:nth-of-type(odd) {  background-color: #444 }​*/
+dl:nth-of-type(odd) {  background-color: #ccc }​*/
 
 
 .fielddb-lexicon dt span{
@@ -66,7 +66,7 @@ dl:nth-of-type(odd) {  background-color: #444 }​*/
 	margin: 0;
 	float:left;
 	width:40%; 
-	color: #444;
+	color: #ccc;
 }
 
 .fielddb-lexicon dd span{
@@ -77,12 +77,12 @@ dl:nth-of-type(odd) {  background-color: #444 }​*/
 }
 
 .fielddb-lexicon-utterance {
-	color: #444;
+	color: #ccc;
 	background-color: #323245;
 }
 
 .fielddb-lexicon-morphemes {
-	color: #444;
+	color: #ccc;
 	background-color: #353535;
 }
 
@@ -97,12 +97,12 @@ dl:nth-of-type(odd) {  background-color: #444 }​*/
 }
 
 .fielddb-lexicon [contenteditable="true"]:focus{
-	color: #333;
+	color: #fff;
 }
 
 /* D3 force directed graph */
 .fielddb-lexicon circle.node {
-	stroke: #333;
+	stroke: #fff;
 	stroke-width: 1.5px;
 }
 
@@ -130,7 +130,7 @@ dl:nth-of-type(odd) {  background-color: #444 }​*/
 }
 
 .fielddb-lexicon circle {
-	fill: #444;
+	fill: #ccc;
 	stroke: #333;
 	stroke-width: 1.5px;
 }
