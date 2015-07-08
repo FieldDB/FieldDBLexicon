@@ -2,14 +2,14 @@
 
 angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconNode', function() {
   return {
-    template: '<div></div>',
+    templateUrl: 'app/components/lexicon/node.html',
     restrict: 'A',
     transclude: false,
     scope: {
-      data: '=json'
+      lexicalEntry: '=json'
     },
     link: function postLink(scope, element, attrs) {
-      element.text('fielddbLexiconNode');
+      // element.text('fielddbLexiconNode');
     }
   };
 });
