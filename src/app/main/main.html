@@ -14,7 +14,7 @@ Sample use of the lexicon directives.
       <h2>{{corpus.dbname}} {{corpus.lexicon.length}}</h2>
       <div class="fielddb-lexicon" data-fielddb-lexicon-connected-graph class="fielddb-lexicon-connected-graph" json="corpus"></div>
       <div class="fielddb-lexicon" id="glosser"></div>
-      <div class="fielddb-lexicon" data-fielddb-lexicon-nodes class="fielddb-lexicon-nodes" json="corpus"></div>
+      <div class="fielddb-lexicon" data-fielddb-lexicon-nodes class="fielddb-lexicon-nodes" json="corpus.lexicon"></div>
       <div class="fielddb-lexicon" id="lexicon"></div>
     </td>
   </tr>
@@ -31,6 +31,3 @@ Sample use of the lexicon directives.
     </td>
   </tr>
 </table>
-
-
-{{corpus | json}}
