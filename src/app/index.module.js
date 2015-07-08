@@ -7,7 +7,7 @@
 		'ngTouch',
 		'ngSanitize',
 		'ngRoute',
-		'mgcrea.ngStrap'
-	]);
+		'mgcrea.ngStrap',
+		'WordCloudApp'	]);
 
 })();

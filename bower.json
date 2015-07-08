@@ -13,7 +13,8 @@
     "animate.css": "~3.3.0",
     "angular": "~1.4.0",
     "ilanguage-cloud-angular": "git://github.com/iLanguage/iLanguageCloudChrome.git",
-    "fielddb-glosser": "git://github.com/OpenSourceFieldlinguistics/FieldDBGlosser.git"
+    "fielddb-glosser": "git://github.com/OpenSourceFieldlinguistics/FieldDBGlosser.git",
+    "fielddb": "git://github.com/OpenSourceFieldlinguistics/FieldDB.git"
   },
   "main": "dist/scripts.js",
   "devDependencies": {
