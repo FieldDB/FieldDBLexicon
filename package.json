@@ -49,7 +49,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "postinstall": "bower install; bower link fielddb-glosser; bower link ilanguage-cloud-angular || exit 0",
+    "postinstall": "bower install; bower link fielddb; bower link fielddb-angular; bower link fielddb-glosser; bower link ilanguage-cloud-angular || exit 0",
     "test": "gulp test"
   }
 }
