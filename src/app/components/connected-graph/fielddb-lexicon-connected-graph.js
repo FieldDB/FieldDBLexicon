@@ -44,8 +44,11 @@ angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconConnectedGra
           var renderFirstGraph = function() {
             var glosserElement = document.getElementById("glosser");
             glosserElement.innerHTML = "";
-            var confidenceThreshold = scope.lexiconConfidenceThreshold / 10;
-            firstGlosser.visualizePrecedenceRelationsAsForceDirectedGraph(lexicon, glosserElement, false, 0.1);
+            var confidenceRange = {
+              min: 0.5,
+              max: 0.9
+            };
+            firstGlosser.visualizePrecedenceRelationsAsForceDirectedGraph(lexicon, glosserElement, false, confidenceRange);
           };
           // rerenderIfWordBoundariesChange.push(renderFirstGraph);
           renderFirstGraph();
