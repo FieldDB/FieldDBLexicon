@@ -36,7 +36,8 @@ angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconConnectedGra
             dbname: scope.data.dbname,
             element: document.getElementById("lexicon"),
             dontConnectWordBoundaries: !scope.showWordBoundaries,
-            localDOM: document
+            localDOM: document,
+            url: scope.data.url
           });
           scope.data.lexicon = lexicon;
           lexicon.bindToView();

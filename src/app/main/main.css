@@ -1,4 +1,4 @@
-.fielddb-lexicon-data {
+.fielddb-lexicon .data {
 	width: 100%;
 	resize: auto !important;
 	height: 20em;
@@ -31,12 +31,6 @@
 	opacity: 0.8;
 }
 
-.fielddb-lexicon-data {
-	width: 100%;
-	resize: auto !important;
-	height: 20em;
-}
-
 .fielddb-lexicon .discussion {
 	font-style: italic;
 	margin-right: 0.2em;
@@ -49,6 +43,7 @@
 .fielddb-lexicon .headword {
 	font-weight: bold;
 	padding-right: 0.2em;
+	color: black;
 }
 
 .fielddb-lexicon dl {
@@ -58,7 +53,7 @@
 
 /*
 dd:nth-of-type(odd) {   background-color: #333}
-dl:nth-of-type(odd) {  background-color: #444 }​*/
+dl:nth-of-type(odd) {  background-color: #ccc }​*/
 
 
 .fielddb-lexicon dt span{
@@ -66,7 +61,7 @@ dl:nth-of-type(odd) {  background-color: #444 }​*/
 	margin: 0;
 	float:left;
 	width:40%; 
-	color: #444;
+	color: #ccc;
 }
 
 .fielddb-lexicon dd span{
@@ -76,33 +71,34 @@ dl:nth-of-type(odd) {  background-color: #444 }​*/
 	width:55%; 
 }
 
-.fielddb-lexicon-utterance {
-	color: #444;
+.fielddb-lexicon .utterance {
+	color: #ccc;
 	background-color: #323245;
 }
 
-.fielddb-lexicon-morphemes {
-	color: #444;
+.fielddb-lexicon .morphemes {
+	color: #ccc;
 	background-color: #353535;
 }
 
-.fielddb-lexicon-gloss {
+.fielddb-lexicon .gloss {
 	color: #ccfcfc;
 	background-color: #232323;
 }
 
-.fielddb-lexicon-confidence {
+.fielddb-lexicon .confidence {
 	color: #999;
 	background-color: #454545;
 }
 
 .fielddb-lexicon [contenteditable="true"]:focus{
-	color: #333;
+	color: black;
+	background-color: white;
 }
 
 /* D3 force directed graph */
 .fielddb-lexicon circle.node {
-	stroke: #333;
+	stroke: #fff;
 	stroke-width: 1.5px;
 }
 
@@ -130,7 +126,7 @@ dl:nth-of-type(odd) {  background-color: #444 }​*/
 }
 
 .fielddb-lexicon circle {
-	fill: #444;
+	fill: #ccc;
 	stroke: #333;
 	stroke-width: 1.5px;
 }

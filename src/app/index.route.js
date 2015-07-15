@@ -1,16 +1,16 @@
 (function() {
   'use strict';
 
-  function routeConfig($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'app/main/main.html',
+  function routeConfig($stateProvider, $urlRouterProvider) {
+
+    $stateProvider
+      .state("lexicon", {
+        url: "^/:team/:corpusidentifier/lexicon",
+        templateUrl: 'app/main/lexicon-browser.html',
         controller: 'MainController',
         controllerAs: 'main'
-      })
-      .otherwise({
-        redirectTo: '/'
       });
+    $urlRouterProvider.otherwise('/chuj/shared/lexicon');
   }
 
   angular
