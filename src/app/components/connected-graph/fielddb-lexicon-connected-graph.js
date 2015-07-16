@@ -1,4 +1,3 @@
-
 'use strict';
 /* globals Glosser, LexiconFactory, iLanguageCloud */
 angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconConnectedGraph', function() {
@@ -13,7 +12,7 @@ angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconConnectedGra
       if (!scope.corpus || !scope.corpus.dbname) {
         return;
       }
-      scope.lexiconConfidenceThreshold = 10;
+      scope.showLexiconConfidenceRange = 10;
       // console.log("scopedata", scope.corpus);
       var firstGlosser = new Glosser({
         dbname: scope.corpus.dbname,
@@ -52,8 +51,11 @@ angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconConnectedGra
           var renderFirstGraph = function() {
             var glosserElement = element.find('section')[0];
             glosserElement.innerHTML = '';
-            var confidenceThreshold = scope.lexiconConfidenceThreshold / 10;
-            firstGlosser.visualizePrecedenceRelationsAsForceDirectedGraph(lexicon, glosserElement, false, 0.1);
+            var confidenceRange = scope.corpus.prefs.lexiconConfidenceRange || {
+              min: 0.5,
+              max: 0.9
+            };
+            firstGlosser.visualizePrecedenceRelationsAsForceDirectedGraph(lexicon, glosserElement, false, confidenceRange);
           };
           // rerenderIfWordBoundariesChange.push(renderFirstGraph);
           renderFirstGraph();
