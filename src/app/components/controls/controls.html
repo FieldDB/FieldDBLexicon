@@ -40,7 +40,11 @@
     </div>
 </label>
 
-<label class="topcoat" title="Lexicon nodes below the threshold wont be shown">Confidence cut-off:</label>
-<label class="topcoat">
-    <input ng-model="corpus.prefs.showLexiconConfidenceRange" type="range" min="0" max="10" class="topcoat-range">
+<label class="topcoat" title="Lexicon nodes below the threshold wont be shown">Confidence cut-off min:</label>
+<label class="topcoat" title="Lexicon nodes below the threshold wont be shown">
+    <input ng-model="corpus.prefs.showLexiconConfidenceRange.min" type="range" min="0" max="1" class="topcoat-range" step="0.01">
+</label>
+<label class="topcoat" title="Lexicon nodes above the threshold wont be shown">max:</label>
+<label class="topcoat" title="Lexicon nodes above the threshold wont be shown">
+    <input ng-model="corpus.prefs.showLexiconConfidenceRange.max" type="range" min="0" max="1" class="topcoat-range" step="0.01">
 </label>

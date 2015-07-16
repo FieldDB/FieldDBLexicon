@@ -15,7 +15,10 @@
         showGlosserAsGraph: true,
         showLexiconAsList: true,
         graphWordBoundaries: true,
-        showLexiconConfidenceRange: 3
+        showLexiconConfidenceRange: {
+          min: 0.3,
+          max: 1
+        }
       }
     });
     if (FieldDB && FieldDB.FieldDBObject && FieldDB.FieldDBObject.application) {
