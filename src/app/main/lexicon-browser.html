@@ -5,17 +5,15 @@ Welcome to the Lexicon Browser. This interface can be used to either browse your
     <td colspan="2">
       <header>
         <h2 hidden>Lexicon Browser</h2>
-        <div data-fielddb-lexicon-controls></div>
+        <div data-fielddb-lexicon-controls json="corpus"></div>
       </header>
     </td>
   </tr>
   <tr>
     <td colspan="2">
       <h2>{{corpus.dbname}} {{corpus.lexicon.length}}</h2>
-      <div ng-show="corpus.showGlosserAsGraph" class="fielddb-lexicon" data-fielddb-lexicon-connected-graph class="fielddb-lexicon-connected-graph" json="corpus"></div>
-      <div class="fielddb-lexicon" id="glosser"></div>
-      <div ng-show="corpus.showLexiconAsList"  class="fielddb-lexicon" data-fielddb-lexicon-nodes class="fielddb-lexicon-nodes" json="corpus.lexicon"></div>
-      <div class="fielddb-lexicon" id="lexicon"></div>
+      <div data-fielddb-lexicon-connected-graph class="fielddb-lexicon-connected-graph" json="corpus"></div>
+      <div data-fielddb-lexicon-nodes class="fielddb-lexicon-nodes" json="corpus.lexicon"></div>
     </td>
   </tr>
   <tr>

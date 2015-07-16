@@ -1,49 +1,57 @@
-'use strict';
 
+'use strict';
+/* globals Glosser, LexiconFactory, iLanguageCloud */
 angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconConnectedGraph', function() {
   return {
-    template: '<div></div>',
+    template: '<section ng-show="corpus.prefs.showGlosserAsGraph" class="fielddb-glosser fielddb-lexicon"></section><section ng-show="corpus.prefs.showLexiconAsList" class="fielddb-lexicon"></section>',
     restrict: 'A',
-    transclude: false,
+    // transclude: false,
     scope: {
-      data: '=json'
+      corpus: '=json'
     },
-    link: function postLink(scope, element, attrs) {
-      if (!scope.data || !scope.data.dbname) {
+    link: function postLink(scope, element) {
+      if (!scope.corpus || !scope.corpus.dbname) {
         return;
       }
       scope.lexiconConfidenceThreshold = 10;
-      // console.log("scopedata", scope.data);
+      // console.log("scopedata", scope.corpus);
       var firstGlosser = new Glosser({
-        dbname: scope.data.dbname,
+        dbname: scope.corpus.dbname,
         localDocument: document
       });
-      firstGlosser.downloadPrecedenceRules(scope.data.dbname,
-        "http://localhost:5984/" +
-        scope.data.dbname +
-        "/_design/lexicon/_view/morphemesPrecedenceContext?group=true&limit=400",
+      scope.corpus.runningStemmer = true;
+      firstGlosser.downloadPrecedenceRules(scope.corpus.dbname,
+        'http://localhost:5984/' +
+        scope.corpus.dbname +
+        '/_design/lexicon/_view/morphemesPrecedenceContext?group=true&limit=400',
         function(precedenceRelations) {
           var utterance = firstGlosser.guessUtteranceFromMorphemes({
-            utterance: "",
-            morphemes: "Kicha-nay-wa-n punqo-ta",
-            allomorphs: "",
-            gloss: "open-DES-1OM-3SG door-ACC",
-            translation: "I feel like opening the door."
+            utterance: '',
+            morphemes: 'Kicha-nay-wa-n punqo-ta',
+            allomorphs: '',
+            gloss: 'open-DES-1OM-3SG door-ACC',
+            translation: 'I feel like opening the door.'
           });
           console.log(utterance);
           var lexicon = LexiconFactory({
             precedenceRelations: precedenceRelations,
-            dbname: scope.data.dbname,
-            element: document.getElementById("lexicon"),
+            dbname: scope.corpus.dbname,
+            lexicalEntriesElement: element.find('section')[1],
             dontConnectWordBoundaries: !scope.showWordBoundaries,
             localDOM: document,
-            url: scope.data.url
+            url: scope.corpus.url
           });
-          scope.data.lexicon = lexicon;
+          var wordCloud = new iLanguageCloud({
+            orthography: 'please show me a word cloud please'
+          });
+          // wordCloud.lexicon = lexicon;
+          // scope.corpus.wordCloud = wordCloud;
+          scope.corpus.lexicon = lexicon;
+          
           lexicon.bindToView();
           var renderFirstGraph = function() {
-            var glosserElement = document.getElementById("glosser");
-            glosserElement.innerHTML = "";
+            var glosserElement = element.find('section')[0];
+            glosserElement.innerHTML = '';
             var confidenceThreshold = scope.lexiconConfidenceThreshold / 10;
             firstGlosser.visualizePrecedenceRelationsAsForceDirectedGraph(lexicon, glosserElement, false, 0.1);
           };
