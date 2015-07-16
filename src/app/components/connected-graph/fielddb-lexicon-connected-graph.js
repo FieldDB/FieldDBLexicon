@@ -45,8 +45,9 @@ angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconConnectedGra
             var wordCloud = new iLanguageCloud({
               orthography: 'please show me a word cloud please'
             });
+            wordCloud.render();
             // wordCloud.lexicon = lexicon;
-            // scope.corpus.wordCloud = wordCloud;
+            scope.corpus.wordCloud = wordCloud;
             scope.corpus.lexicon = lexicon;
 
             lexicon.bindToView();
