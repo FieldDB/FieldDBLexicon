@@ -34,7 +34,7 @@ angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconConnectedGra
           '/_design/lexicon/_view/morphemesPrecedenceContext?group=true&limit=400')
         .then(
           function(precedenceRelations) {
-            var lexicon = LexiconFactory({
+            var lexicon = Lexicon.LexiconFactory({
               precedenceRelations: precedenceRelations,
               dbname: scope.corpus.dbname,
               lexicalEntriesElement: element.find('section')[1],
