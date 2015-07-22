@@ -9,7 +9,7 @@
 		'ngTouch',
 		'ngSanitize',
 		'ui.router',
-		'mgcrea.ngStrap',
+		// 'mgcrea.ngStrap',
 		'WordCloudApp',
 		'fielddbAngular'
 	]);
