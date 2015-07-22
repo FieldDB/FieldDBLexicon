@@ -10,6 +10,11 @@
         controller: 'MainController',
         controllerAs: 'main'
       });
+    $stateProvider
+      .state("faq", {
+        url: "^/faq",
+        templateUrl: 'app/components/faq/faq.html'
+      });
     $urlRouterProvider.otherwise('/chuj/shared/lexicon');
   }
 
