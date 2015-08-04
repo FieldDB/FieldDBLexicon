@@ -14,7 +14,7 @@
         autoSaveAndReTrain: false,
         showGlosserAsGraph: true,
         showLexiconAsList: true,
-        graphWordBoundaries: true,
+        showGlosserAsMorphemicTemplate: true,
         showLexiconConfidenceRange: {
           min: 0.3,
           max: 1

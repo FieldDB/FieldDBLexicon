@@ -1,5 +1,5 @@
 'use strict';
-/* globals Glosser, LexiconFactory, iLanguageCloud */
+/* globals FieldDB, Lexicon, iLanguageCloud */
 angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconConnectedGraph', function() {
   return {
     template: '<section ng-show="corpus.prefs.showGlosserAsGraph" class="fielddb-glosser fielddb-lexicon"></section><section ng-show="corpus.prefs.showLexiconAsList" class="fielddb-lexicon"></section>',
@@ -13,55 +13,62 @@ angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconConnectedGra
         return;
       }
       // console.log("scopedata", scope.corpus);
-      scope.corpus.glosser = new Glosser({
+      scope.corpus.glosser = scope.corpus.glosser || new FieldDB.Glosser({
         dbname: scope.corpus.dbname,
         localDocument: document
       });
       scope.corpus.runningStemmer = true;
+      scope.corpus.lexicon = scope.corpus.lexicon || new FieldDB.Lexicon({
+        dbname: scope.corpus.dbname,
+        lexicalEntriesElement: element.find('section')[1],
+        dontConnectWordBoundaries: !scope.showWordBoundaries,
+        localDOM: document
+      });
 
-      scope.corpus.glosser.render = function() {
-        var glosserElement = element.find('section')[0];
-        glosserElement.innerHTML = '';
-        var confidenceRange = scope.corpus.prefs.lexiconConfidenceRange || {
-          min: 0.5,
-          max: 0.9
-        };
-        this.visualizePrecedenceRelationsAsForceDirectedGraph(scope.corpus.lexicon, glosserElement, false, confidenceRange);
-      };
+      scope.corpus.lexicon.fetch().then(function(entries) {
+        if (!entries.length) {
+          scope.corpus.lexicon.popup("I downloaded your lexicon. Are you sure you have data in your " + scope.corpus.title + " corpus?");
+          return;
+        }
+        scope.corpus.glosser.fetch()
+          .then(
+            function(precedenceRelations) {
+              scope.corpus.lexicon.entryRelations = precedenceRelations;
+              scope.corpus.lexicon.updateConnectedGraph();
 
-      scope.corpus.glosser.downloadPrecedenceRules(scope.corpus.dbname,
-          'http://localhost:5984/' + scope.corpus.dbname +
-          '/_design/lexicon/_view/morphemesPrecedenceContext?group=true&limit=400')
-        .then(
-          function(precedenceRelations) {
-            var lexicon = Lexicon.LexiconFactory({
-              precedenceRelations: precedenceRelations,
-              dbname: scope.corpus.dbname,
-              lexicalEntriesElement: element.find('section')[1],
-              dontConnectWordBoundaries: !scope.showWordBoundaries,
-              localDOM: document,
-              url: scope.corpus.url
-            });
-            var wordCloud = new iLanguageCloud({
-              orthography: 'please show me a word cloud please'
-            });
-            wordCloud.render();
-            // wordCloud.lexicon = lexicon;
-            scope.corpus.wordCloud = wordCloud;
-            scope.corpus.lexicon = lexicon;
+              // var wordCloud = new iLanguageCloud({
+              //   orthography: 'please show me a word cloud please'
+              // });
+              // wordCloud.render();
+              // wordCloud.lexicon = lexicon;
+              // scope.corpus.wordCloud = wordCloud;
 
-            lexicon.bindToView();
+              lexicon.bindToView();
 
-            // rerenderIfWordBoundariesChange.push(scope.corpus.glosser.render);
-            scope.corpus.glosser.render();
-          },
-          function(error) {
-            scope.corpus.bug('There was a problem loading the glosser' + error.userFriendlyErrors);
-          })
-        .fail(function(exception) {
-          scope.corpus.bug('There was a problem loading the glosser. Please report this.');
-          console.warn(exception.stack);
-        });
+              // rerenderIfWordBoundariesChange.push(scope.corpus.glosser.render);
+              scope.corpus.glosser.render();
+            },
+            function(error) {
+              console.warn('There was a problem loading the glosser ' + error.stack);
+              scope.corpus.bug('There was a problem loading the glosser ' + error.userFriendlyErrors);
+            })
+          .fail(function(exception) {
+            scope.corpus.bug('There was a problem loading the glosser. Please report this.');
+            console.warn(exception.stack);
+          });
+
+      });
+      // scope.corpus.glosser.render = function() {
+      //   var glosserElement = element.find('section')[0];
+      //   glosserElement.innerHTML = '';
+      //   var confidenceRange = scope.corpus.prefs.lexiconConfidenceRange || {
+      //     min: 0.5,
+      //     max: 0.9
+      //   };
+      //   this.visualizePrecedenceRelationsAsForceDirectedGraph(scope.corpus.lexicon, glosserElement, false, confidenceRange);
+      // };
+
+
     }
   };
 });
