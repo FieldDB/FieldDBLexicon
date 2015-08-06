@@ -14,7 +14,8 @@
     "animate.css": "~3.3.0",
     "fielddb": "git://github.com/OpenSourceFieldlinguistics/FieldDB.git",
     "fielddb-angular": "~2.45.3",
-    "ilanguage-cloud-angular": "git://github.com/iLanguage/iLanguageCloudChrome.git"
+    "ilanguage-cloud-angular": "git://github.com/iLanguage/iLanguageCloudChrome.git",
+    "isteven-angular-multiselect": "~4.0.0"
   },
   "main": "dist/scripts.js",
   "devDependencies": {

@@ -9,6 +9,7 @@
 		'ngTouch',
 		'ngSanitize',
 		'ui.router',
+		'isteven-multi-select',
 		// 'mgcrea.ngStrap',
 		'WordCloudApp',
 		'fielddbAngular'

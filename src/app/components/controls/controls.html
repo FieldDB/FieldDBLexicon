@@ -1,5 +1,14 @@
+<div
+    isteven-multi-select
+    input-model="corpus.lexicon.availableLexicalRelations"
+    output-model="corpus.prefs.showRelations"
+    button-label="icon name"
+    item-label="icon name maker count"
+    tick-property="ticked"
+>
+</div>
+
 <label class="topcoat-label">
- 
 </label>
 <button ng-click="corpus.retrainLexicon()" class="topcoat-button--large "><i class="fa fa-refresh"></i> Re-train</button>
 
@@ -53,13 +62,3 @@
     <input ng-model="corpus.prefs.showLexiconConfidenceRange.max" type="range" min="0" max="1" class="topcoat-range" step="0.01">
 </label>
 
-Show Connected Graph:
-<ul>
-    <li>Nodes {{corpus.lexicon.connectedGraph.length}}</li>
-    <li>Preceds {{corpus.lexicon.connectedGraph.precedes.length}}</li>
-    <li>Follows {{corpus.lexicon.connectedGraph.follows.length}}</li>
-    <li>Similar phonology {{corpus.lexicon.connectedGraph.isPhonologicallySimilarTo.length}}</li>
-    <li>Similar semantics {{corpus.lexicon.connectedGraph.isSemanticallySimilarTo.length}}</li>
-    <li>Similar syntax {{corpus.lexicon.connectedGraph.isSyntacticallySimilarTo.length}}</li>
-    <li ng-repeat="edgetype in corpus.lexicon.connectedGraph">Other {{edgetype.length}}</li>
-</ul>
