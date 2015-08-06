@@ -14,11 +14,11 @@ angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconConnectedGra
       }
 
       scope.corpus.status = 'Loading lexicon...';
-      try{
+      try {
         if (!scope.$$phase) {
           scope.$digest();
         }
-      }catch(e){
+      } catch (e) {
         console.log('Scope was already digesting, no need to do it again.');
       }
 
@@ -33,6 +33,7 @@ angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconConnectedGra
         // dontConnectWordBoundaries: !scope.showWordBoundaries,
         localDOM: document
       });
+
 
       lexicon.fetch().then(function(entries) {
         if (!entries.length) {
@@ -65,9 +66,11 @@ angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconConnectedGra
                   element: element.find('section')[0]
                 });
 
+              // lexicon.status = encodeURI(lexicon.status);
               scope.corpus.lexicon = lexicon;
               scope.corpus.glosser = glosser;
               window.lexicon = lexicon;
+
               scope.corpus.status = 'Lexicon loaded.';
               if (!scope.$$phase) {
                 scope.$digest();
