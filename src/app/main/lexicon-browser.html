@@ -10,12 +10,14 @@ Welcome to the Lexicon Browser. This interface can be used to either browse your
       </header>
     </td>
   </tr>
-  <tr>
+  <tr ng-show="application.search.datalist.length">
     <td colspan="2">
-      <h2 ng-show="application.search.datalist.length">Matching Entries {{application.search.datalist.length}}</h2>
-
-      <!-- can use a data list view  once it supports lexical entries, instead of ng-repeat of nodes -->
-      <div ng-repeat="lexicalEntry in application.search.datalist.docs.collection" data-fielddb-lexicon-node class="fielddb-lexicon-node" json="lexicalEntry"></div>
+      <h2>{{application.search.datalist.title}} {{application.search.datalist.length}}</h2>
+      <p>{{application.search.datalist.description}}</p>
+      <div class="scrollable" >
+        <!-- TODO can use a data list view  once it supports lexical entries, instead of ng-repeat of nodes -->
+        <div ng-repeat="lexicalEntry in application.search.datalist.docs.collection" data-fielddb-lexicon-node class="fielddb-lexicon-node" json="lexicalEntry"></div>
+      </div>
     </td>
   </tr>
   <tr>
