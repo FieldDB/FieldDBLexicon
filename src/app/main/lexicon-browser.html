@@ -1,17 +1,30 @@
 Welcome to the Lexicon Browser. This interface can be used to either browse your lexicon, or clean your corpus while cleaning the lexicon. The Lexicon is automatically trained based on the data in your Corpus, it is more similar to a Mental Lexicon than a Word List or Dictionary. To view examples of the morpheme's usage, hover over any morpheme either in the Precedence Graph where it appears in the context of other morphemes, or in the more traditional list form which congains the Lexicon Nodes as cards below. In the Lexicon Node List you can double click on any card to view/edit the discussion/definition of the lexical item. Click on any text to edit it.
 
-<table border="1">
+<table border="1" ng-controller="MainController">
   <tr class="browser-controls">
     <td colspan="2">
       <header>
         <h2 hidden>Lexicon Browser</h2>
+        
         <div data-fielddb-lexicon-controls json="corpus"></div>
       </header>
     </td>
   </tr>
   <tr>
     <td colspan="2">
-      <h2>{{corpus.dbname}} {{corpus.lexicon.length}}</h2>
+      <h2 ng-show="filteredLexicalItems.length">Matching Entries {{filteredLexicalItems.length}}</h2>
+      
+      <label>Filter: </label>
+      <input type="text" ng-model="lexiconFilter" ng-blur="filter(lexiconFilter)"/>
+
+      <div ng-repeat="lexicalEntry in filteredLexicalItems" data-fielddb-lexicon-node class="fielddb-lexicon-node" json="lexicalEntry"></div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <h2>{{corpus.dbname}} {{corpus.lexicon.length}} </h2>
+      <p ng-show="corpus.error" class="error">{{corpus.error}}</p>
+      <p ng-show="corpus.status" class="status"> {{corpus.status}}</p>
       <div data-fielddb-lexicon-connected-graph class="fielddb-lexicon-connected-graph" json="corpus"></div>
       <div data-fielddb-lexicon-nodes class="fielddb-lexicon-nodes" json="corpus.lexicon"></div>
     </td>
@@ -19,13 +32,13 @@ Welcome to the Lexicon Browser. This interface can be used to either browse your
   <tr>
     <td colspan="2" class="word-cloud-app">
       <!-- <div class="word-cloud-viz" data-word-cloud model="corpus.wordCloud" placeholder="Lexicon word cloud">
-      </div> -->
-    </td>
-  </tr>
-  <tr>
-    <td colspan="2">
-      <div data-fielddb-lexicon-data json="corpus" placeholder="Lexicon raw data">
-      </div>
-    </td>
-  </tr>
+    </div> -->
+  </td>
+</tr>
+<tr ng-show="corpus.lexicon.length">
+  <td colspan="2">
+    <div data-fielddb-lexicon-data json="corpus" placeholder="Lexicon raw data">
+    </div>
+  </td>
+</tr>
 </table>
