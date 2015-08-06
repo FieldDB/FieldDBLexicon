@@ -1,10 +1,9 @@
-
 <label class="topcoat-label">
  
 </label>
 <button ng-click="corpus.retrainLexicon()" class="topcoat-button--large fa fa-refresh"> Re-train</button>
 
-<label class="topcoat" title="Lexicon entries beyond this limit will not be shown">Max lexicon size: {{FieldDB.Lexicon.maxLexiconSize}}</label>
+<label class="topcoat" title="Lexicon entries beyond this limit will not be shown">Max lexicon size: {{maxLexiconSize}} </label>
 <label class="topcoat" title="Lexicon entries beyond this limit will not be shown">
     <input ng-model="corpus.prefs.showLexiconConfidenceRange.min" type="range" min="100" max="99999" class="topcoat-range" step="100">
 </label>
@@ -53,3 +52,14 @@
 <label class="topcoat" title="Lexicon nodes above the threshold wont be shown">
     <input ng-model="corpus.prefs.showLexiconConfidenceRange.max" type="range" min="0" max="1" class="topcoat-range" step="0.01">
 </label>
+
+Show Connected Graph:
+<ul>
+    <li>Nodes {{corpus.lexicon.connectedGraph.length}}</li>
+    <li>Preceds {{corpus.lexicon.connectedGraph.precedes.length}}</li>
+    <li>Follows {{corpus.lexicon.connectedGraph.follows.length}}</li>
+    <li>Similar phonology {{corpus.lexicon.connectedGraph.isPhonologicallySimilarTo.length}}</li>
+    <li>Similar semantics {{corpus.lexicon.connectedGraph.isSemanticallySimilarTo.length}}</li>
+    <li>Similar syntax {{corpus.lexicon.connectedGraph.isSyntacticallySimilarTo.length}}</li>
+    <li ng-repeat="edgetype in corpus.lexicon.connectedGraph">Other {{edgetype.length}}</li>
+</ul>
