@@ -31,6 +31,7 @@
       $scope.corpus.prefs.autoSaveAndReTrain = $scope.corpus.prefs.autoSaveAndReTrain || false;
       $scope.corpus.prefs.showGlosserAsGraph = $scope.corpus.prefs.showGlosserAsGraph || true;
       $scope.corpus.prefs.showLexiconAsList = $scope.corpus.prefs.showLexiconAsList || true;
+      $scope.corpus.prefs.maxLexiconSize = $scope.corpus.prefs.maxLexiconSize || FieldDB.Lexicon.maxLexiconSize;
       $scope.corpus.prefs.showGlosserAsMorphemicTemplate = $scope.corpus.prefs.showGlosserAsMorphemicTemplate || true;
       $scope.corpus.prefs.showLexiconConfidenceRange = $scope.corpus.prefs.showLexiconConfidenceRange || {
         min: 0.3,
