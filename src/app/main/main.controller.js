@@ -6,18 +6,21 @@
   var MainController = function($scope, $rootScope) {
     console.log('Loading ', $rootScope.$stateParams);
 
-    $scope.filter = function(filterString) {
-      if ($scope.corpus && $scope.corpus.lexicon && $scope.corpus.lexicon.length && typeof $scope.corpus.lexicon.find === 'function') {
-        $scope.filteredLexicalItems = $scope.corpus.lexicon.find("headword", filterString, "fuzzy");
-      }
-    };
-
-    if ($rootScope.$stateParams && $rootScope.$stateParams.lexicalentry) {
-      $scope.lexiconFilter = $rootScope.$stateParams.lexicalentry;
-      $scope.filter($scope.lexiconFilter);
-    }
 
     if (FieldDB && FieldDB.FieldDBObject && FieldDB.FieldDBObject.application) {
+      FieldDB.FieldDBObject.application.search = FieldDB.FieldDBObject.application.search || new FieldDB.Search();
+      FieldDB.FieldDBObject.application.search.search = function(filterString) {
+        this.prepareDataListForSearchQuery(filterString);
+        if ($scope.corpus && $scope.corpus.lexicon && $scope.corpus.lexicon.length && typeof $scope.corpus.lexicon.find === 'function') {
+          FieldDB.FieldDBObject.application.search.datalist.docs = $scope.corpus.lexicon.find("headword", filterString, "fuzzy");
+        }
+      };
+
+      if ($rootScope.$stateParams && $rootScope.$stateParams.lexicalentry) {
+        FieldDB.FieldDBObject.application.search.searchQuery = $rootScope.$stateParams.lexicalentry;
+        FieldDB.FieldDBObject.application.search.search(FieldDB.FieldDBObject.application.search.searchQuery);
+      }
+
       var loadingPromise = FieldDB.FieldDBObject.application.processRouteParams($rootScope.$stateParams);
       if (!FieldDB.FieldDBObject.application.corpus) {
         console.warn('Corpus wasnt loadable from route params', $rootScope.$stateParams);
@@ -38,11 +41,17 @@
         max: 1
       };
 
+
+
       FieldDB.FieldDBObject.application.router.navigate = function(url, options) {
         // $location.url(url);
         // $location.path(FieldDB.FieldDBObject.application.basePathname + url, false);
         window.location.href = FieldDB.FieldDBObject.application.basePathname + url;
-        $scope.filter(url.substring(url.lastIndexOf('/') + 1));
+        FieldDB.FieldDBObject.application.search.searchQuery = url.substring(url.lastIndexOf('/') + 1);
+        FieldDB.FieldDBObject.application.search.search(FieldDB.FieldDBObject.application.search.searchQuery);
+        if (!$scope.$$phase) {
+          $scope.$digest();
+        }
       };
 
       if (loadingPromise && typeof loadingPromise.then === 'function') {

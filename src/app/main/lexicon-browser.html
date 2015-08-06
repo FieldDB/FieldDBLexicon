@@ -12,19 +12,21 @@ Welcome to the Lexicon Browser. This interface can be used to either browse your
   </tr>
   <tr>
     <td colspan="2">
-      <h2 ng-show="filteredLexicalItems.length">Matching Entries {{filteredLexicalItems.length}}</h2>
-      
-      <label>Filter: </label>
-      <input type="text" ng-model="lexiconFilter" ng-blur="filter(lexiconFilter)"/>
+      <h2 ng-show="application.search.datalist.length">Matching Entries {{application.search.datalist.length}}</h2>
 
-      <div ng-repeat="lexicalEntry in filteredLexicalItems" data-fielddb-lexicon-node class="fielddb-lexicon-node" json="lexicalEntry"></div>
+      <label>Filter: </label>
+      <input type="search" value="" placeholder="search" class="topcoat-search-input--large" ng-model="application.search.searchQuery" ng-blur="application.search.search(application.search.searchQuery)">
+
+
+      <div ng-repeat="lexicalEntry in application.search.datalist.docs.collection" data-fielddb-lexicon-node class="fielddb-lexicon-node" json="lexicalEntry"></div>
     </td>
   </tr>
   <tr>
     <td colspan="2">
-      <h2>{{corpus.dbname}} {{corpus.lexicon.length}} </h2>
+      <h2 title="{{corpus.lexicon.status}}">{{corpus.dbname}} {{corpus.lexicon.length}} </h2>
       <p ng-show="corpus.error" class="error">{{corpus.error}}</p>
-      <p ng-show="corpus.status" class="status"> {{corpus.status}}</p>
+      <p ng-show="corpus.status" class="status"> <i ng-show="!corpus.glosser || !corpus.lexicon" class="fa fa-spinner fa-spin"></i> {{corpus.status}}</p>
+
       <div data-fielddb-lexicon-connected-graph class="fielddb-lexicon-connected-graph" json="corpus"></div>
       <div data-fielddb-lexicon-nodes class="fielddb-lexicon-nodes" json="corpus.lexicon"></div>
     </td>
