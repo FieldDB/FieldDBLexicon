@@ -40,6 +40,7 @@
       FieldDB.FieldDBObject.application.router.navigate = function(url, options) {
         // $location.url(url);
         // $location.path(FieldDB.FieldDBObject.application.basePathname + url, false);
+        window.location.href = FieldDB.FieldDBObject.application.basePathname + url;
         $scope.filter(url.substring(url.lastIndexOf('/') + 1));
       };
 
