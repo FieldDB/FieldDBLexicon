@@ -1,11 +1,11 @@
 <label class="topcoat-label">
  
 </label>
-<button ng-click="corpus.retrainLexicon()" class="topcoat-button--large fa fa-refresh"> Re-train</button>
+<button ng-click="corpus.retrainLexicon()" class="topcoat-button--large "><i class="fa fa-refresh"></i> Re-train</button>
 
 <label class="topcoat" title="Lexicon entries beyond this limit will not be shown">Max lexicon size: {{corpus.prefs.maxLexiconSize}} </label>
 <label class="topcoat" title="Lexicon entries beyond this limit will not be shown">
-    <input ng-model="corpus.prefs.maxLexiconSize" type="range" min="100" max="99999" class="topcoat-range" step="100">
+    <input ng-model="corpus.prefs.maxLexiconSize" type="range" min="100" max="40000" class="topcoat-range" step="100">
 </label>
 
 <label class="topcoat-label">
