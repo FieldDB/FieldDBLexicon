@@ -8,6 +8,10 @@
 
 
     if (FieldDB && FieldDB.FieldDBObject && FieldDB.FieldDBObject.application) {
+
+      FieldDB.FieldDBObject.application.brand = "Lexicon Browser";
+      FieldDB.FieldDBObject.application.website = FieldDB.FieldDBObject.application.basePathname;
+
       FieldDB.FieldDBObject.application.search = FieldDB.FieldDBObject.application.search || new FieldDB.Search();
       FieldDB.FieldDBObject.application.search.search = function(filterString) {
         this.prepareDataListForSearchQuery(filterString);
