@@ -62,7 +62,7 @@ angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconConnectedGra
                   // igtFields: ["orthography", "utterance", "morphemes","gloss"]
                 })
                 .visualizeAsForceDirectedGraph({
-                  element: document.getElementById('test-force-directed-graph') //element.find('section')[0]
+                  element: element.find('section')[0]
                 });
 
               scope.corpus.lexicon = lexicon;
