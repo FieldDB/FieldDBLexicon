@@ -1,1 +1,95 @@
-entry {{lexicalEntry}}
+<div class="fielddb-lexicon-entry lr_container mod">
+	<div class="lr_dct_ent" data-hveid="29">
+		<div class="vk_ans" style="margin-bottom:0"><span data-dobid="hdw">{{lexicalEntry.headword}}</span></div>
+		<div>
+			<div class="lr_dct_ent_ph">
+				<span class="lr_dct_ph">
+					<span>{{lexicalEntry.phonetic}} ˈleksiˌkän</span>,
+					<span>ˈleksiˌkən</span>/
+				</span>
+				<span class="lr_dct_spkr lr_dct_spkr_off" title="Listen" data-log-string="pronunciation-icon-click" jsaction="dob.p" style="display: inline-block;" ng-click="lexicalEntry.play()">
+					<input src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAQAAADYBBcfAAABN0lEQVR4AZ3UT4vNYRwF8M+dieS3uNtb7r1lKZPNTNlMWY13gDeBrih7L2A2yka2ItlZYWGrjBJF+VdYjEJTFsI1x9qTX/Ptfp716dmc71m2tzfGPvmibAaI+OOmiZLTdgERETtO2dMJPwVwzHVzEbsu64cVOyIAWPNCRJzVa+yjNEGGHoj4bd1/DT2XNgg6WyJeO6Blv0fSE2Tqu4iZxsBtaYPuOQTgkogPlgGATWmDiG1HAZ1vIjZI/wNEvNMBronYXFJz2HnAQ3C8+mM8BUxEbA9EvwEI+OEg2OcX5ksWVA++AozA13rwDmANvK0G37sK2ACPawX4bKUpwMlK5e4aAbjYVG6xktfP6klzVqVD7twXMbdenw5WPRMR5+pjtepG/1jV5vGMkgv/DPItU3XgpSuOaPwFsUTQA47vSZQAAAAASUVORK5CYII=" height="14" type="image" width="14">
+					<audio ng-repeat="audio in lexicalEntry.audioVideo" ng-src="audio.URL" data-dobid="aud" oncanplaythrough="this.parentNode.style.display = 'inline-block'" preload="auto"></audio>
+				</span>
+			</div>
+			<div>
+				<div class="lr_dct_sf_h"><i><span>{{lexicalEntry.syntacticCategory}} noun</span></i></div>
+				<div class="xpdxpnd vk_gy" data-mh="-1"><span>noun: <b>{{lexicalEntry.morphemes}}</b></span><span>;  plural noun: <b>{{lexicalEntry.syntacticCategory}}pl lexicons</b></span></div>
+				<ol class="lr_dct_sf_sens">
+					<li>
+						<div>
+							<div class="lr_dct_sf_sen vk_txt">
+								<div style="margin-left:20px">
+									<div style="margin-left:-20px" class="_Jig">
+										<div style="display:inline" data-dobid="dfn"><span>{{lexicalEntry.discussion}} Lorem ipsum dolor sit amet, consectetur adipisicing elit, ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+										</div>
+										<span >
+											<div class="vk_gy">"{{context.id}} the size of the English lexicon" <a target="_blank" ng-href="context.URL"><i class="fa fa-link"></i></a></div>
+										</span>
+										<span ng-repeat="context in lexicalEntry.contexts">
+											<div class="vk_gy">"{{context.id}} the size of the English lexicon" <a target="_blank" ng-href="context.URL"><i class="fa fa-link"></i></a></div>
+										</span>
+									</div>
+									<!-- <div style="margin-left:-32px" hidden>
+										<ul>
+											<li>
+												<div class="lr_dct_sf_subsen">
+													<div class="_Jig">
+														<div style="display:inline" data-dobid="dfn">
+															<span>a dictionary, especially of Greek, Hebrew, Syriac, or Arabic.</span>
+														</div>
+														<span><div class="vk_gy">"a Greek–Latin lexicon"</div></span>
+														<div>
+															<table class="vk_tbl vk_gy">
+																<tbody>
+																	<tr>
+																		<td class="lr_dct_nyms_ttl" style="padding-right:3px">synonyms:</td>
+																		<td>
+																			<span><a href="/search?client=safari&amp;rls=en&amp;biw=1920&amp;bih=625&amp;q=define+dictionary&amp;sa=X&amp;ved=0CB4Q_SowAGoVChMI2IaS28aTxwIVg8o-Ch0NCw-U" data-ved="0CB4Q_SowAGoVChMI2IaS28aTxwIVg8o-Ch0NCw-U">dictionary</a>, </span>
+																			<span><a href="/search?client=safari&amp;rls=en&amp;biw=1920&amp;bih=625&amp;q=define+wordbook&amp;sa=X&amp;ved=0CB8Q_SowAGoVChMI2IaS28aTxwIVg8o-Ch0NCw-U" data-ved="0CB8Q_SowAGoVChMI2IaS28aTxwIVg8o-Ch0NCw-U">wordbook</a>, </span>
+																			<span>vocabulary list, </span>
+																			<span><a href="/search?client=safari&amp;rls=en&amp;biw=1920&amp;bih=625&amp;q=define+glossary&amp;sa=X&amp;ved=0CCAQ_SowAGoVChMI2IaS28aTxwIVg8o-Ch0NCw-U" data-ved="0CCAQ_SowAGoVChMI2IaS28aTxwIVg8o-Ch0NCw-U">glossary</a>, </span>
+																			<span><a href="/search?client=safari&amp;rls=en&amp;biw=1920&amp;bih=625&amp;q=define+thesaurus&amp;sa=X&amp;ved=0CCEQ_SowAGoVChMI2IaS28aTxwIVg8o-Ch0NCw-U" data-ved="0CCEQ_SowAGoVChMI2IaS28aTxwIVg8o-Ch0NCw-U">thesaurus</a></span>
+																			<span> </span>
+																			<div style="display:inline">
+																				<div style="display:inline">
+																					<span><div class="vk_gy">"an illustrated lexicon"</div></span>
+																				</div>
+																			</div>
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div> -->
+								</div>
+							</div>
+						</div>
+					</li>
+				</ol>
+			</div>
+		</div>
+		<div class="xpdxpnd" data-mh="-1">
+			<div class="vk_sh vk_gy" style="margin:20px 0 0">Origin</div>
+			<div></div>
+			<div><span> {{lexicalEntry.etymology}} early 17th century: modern Latin, from Greek <i>lexikon (biblion</i> ) ‘(book) of words,’ from <i>lexis</i> ‘word,’ from <i>legein</i> ‘speak.’</span></div>
+		</div>
+	</div>
+	<div class="xpdxpnd _xk vkc_np" data-mh="1px"></div>
+
+	<div class="xpdxpnd _xk vkc_np" data-mh="1px"></div>
+	<div class="xpdxpnd vkc_np _Vi _Wi" data-mh="-1">
+		<div data-hveid="36">
+			<div>
+				<!-- <div class="vk_sh vk_gy" style="margin:20px 0 0"> {{lexicalEntry.history}} Use over time for: lexicon</div> -->
+				<div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

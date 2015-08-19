@@ -8,7 +8,7 @@ angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconNode', funct
     scope: {
       lexicalEntry: '=json'
     },
-    link: function postLink(scope, element, attrs) {
+    link: function postLink() {
       // element.text('fielddbLexiconNode');
     }
   };

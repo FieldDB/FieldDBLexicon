@@ -2,20 +2,20 @@
   "name": "fielddb-lexicon-browser",
   "version": "0.0.0",
   "dependencies": {
+    "jquery": "~2.1.4",
+    "angular": "~1.4.0",
     "angular-animate": "~1.4.0",
     "angular-cookies": "~1.4.0",
     "angular-touch": "~1.4.0",
     "angular-sanitize": "~1.4.0",
-    "jquery": "~2.1.4",
     "angular-route": "~1.4.0",
     "bootstrap": "~3.3.5",
-    "angular-strap": "~2.2.4",
+    "angular-bootstrap": "~0.13.0",
     "animate.css": "~3.3.0",
-    "angular": "~1.4.0",
-    "ilanguage-cloud-angular": "git://github.com/iLanguage/iLanguageCloudChrome.git",
-    "fielddb-glosser": "git://github.com/OpenSourceFieldlinguistics/FieldDBGlosser.git",
     "fielddb": "git://github.com/OpenSourceFieldlinguistics/FieldDB.git",
-    "fielddb-angular": "~2.45.3"
+    "fielddb-angular": "~2.45.3",
+    "ilanguage-cloud-angular": "git://github.com/iLanguage/iLanguageCloudChrome.git",
+    "isteven-angular-multiselect": "~4.0.0"
   },
   "main": "dist/scripts.js",
   "devDependencies": {

@@ -11,7 +11,7 @@
 	/*border: 1px solid white !important;*/
 }
 
-.fielddb-lexicon ul li {
+.fielddb-lexicon ul li , .fielddb-lexicon-entry {
 	float: left;
 	padding: 0.5em;
 	margin: 0.5em;
@@ -139,4 +139,16 @@ dl:nth-of-type(odd) {  background-color: #ccc }​*/
 
 .fielddb-lexicon .distance3{
 	opacity: 0.1;
+}
+
+
+.error {
+	color: #990000;
+}
+
+.status {
+}
+
+.fielddb-lexicon-entry {
+	width: 95%;
 }
