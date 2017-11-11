@@ -10,6 +10,12 @@
 
   angular
     .module('fielddbLexiconAngularApp')
-    .config(config);
+    .config(config)
+    .config(function($locationProvider) {
+      $locationProvider.html5Mode({
+        enabled: false,
+        requireBase: false
+      });
+     });
 
 })();

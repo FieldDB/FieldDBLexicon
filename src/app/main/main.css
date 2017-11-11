@@ -1,4 +1,4 @@
-.fielddb-lexicon-data {
+.fielddb-lexicon .data {
 	width: 100%;
 	resize: auto !important;
 	height: 20em;
@@ -11,7 +11,7 @@
 	/*border: 1px solid white !important;*/
 }
 
-.fielddb-lexicon ul li {
+.fielddb-lexicon ul li , .fielddb-lexicon-entry {
 	float: left;
 	padding: 0.5em;
 	margin: 0.5em;
@@ -31,12 +31,6 @@
 	opacity: 0.8;
 }
 
-.fielddb-lexicon-data {
-	width: 100%;
-	resize: auto !important;
-	height: 20em;
-}
-
 .fielddb-lexicon .discussion {
 	font-style: italic;
 	margin-right: 0.2em;
@@ -49,6 +43,7 @@
 .fielddb-lexicon .headword {
 	font-weight: bold;
 	padding-right: 0.2em;
+	color: black;
 }
 
 .fielddb-lexicon dl {
@@ -76,28 +71,29 @@ dl:nth-of-type(odd) {  background-color: #ccc }​*/
 	width:55%; 
 }
 
-.fielddb-lexicon-utterance {
+.fielddb-lexicon .utterance {
 	color: #ccc;
 	background-color: #323245;
 }
 
-.fielddb-lexicon-morphemes {
+.fielddb-lexicon .morphemes {
 	color: #ccc;
 	background-color: #353535;
 }
 
-.fielddb-lexicon-gloss {
+.fielddb-lexicon .gloss {
 	color: #ccfcfc;
 	background-color: #232323;
 }
 
-.fielddb-lexicon-confidence {
+.fielddb-lexicon .confidence {
 	color: #999;
 	background-color: #454545;
 }
 
 .fielddb-lexicon [contenteditable="true"]:focus{
-	color: #fff;
+	color: black;
+	background-color: white;
 }
 
 /* D3 force directed graph */
@@ -111,7 +107,7 @@ dl:nth-of-type(odd) {  background-color: #ccc }​*/
 }
 
 
-.fielddb-lexicon.link {
+.fielddb-lexicon .link {
 	fill: none;
 	stroke: #666;
 	stroke-width: 1.5px;
@@ -121,26 +117,38 @@ dl:nth-of-type(odd) {  background-color: #ccc }​*/
 	fill: green;
 }
 
-.link.licensing {
+.fielddb-lexicon .link.licensing {
 	stroke: green;
 }
 
-.link.resolved {
+.fielddb-lexicon .link.resolved {
 	stroke-dasharray: 0,2 1;
 }
 
-circle {
+.fielddb-lexicon circle {
 	fill: #ccc;
 	stroke: #333;
 	stroke-width: 1.5px;
 }
 
 
-.fielddb-lexicon.distance2{
+.fielddb-lexicon .distance2{
 	opacity: 0.2;
 }
 
 
-.fielddb-lexicon.distance3{
+.fielddb-lexicon .distance3{
 	opacity: 0.1;
+}
+
+
+.error {
+	color: #990000;
+}
+
+.status {
+}
+
+.fielddb-lexicon-entry {
+	width: 95%;
 }

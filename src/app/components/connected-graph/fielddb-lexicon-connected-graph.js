@@ -1,48 +1,114 @@
 'use strict';
-
+/* globals FieldDB */
 angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconConnectedGraph', function() {
   return {
-    template: '<div></div>',
+    template: '<i ng-show="corpus.glosser.fetching" class="fa fa-spinner fa-spin fa-5x"></i><section ng-show="corpus.prefs.showGlosserAsGraph" class="fielddb-glosser fielddb-lexicon"></section><i ng-show="corpus.lexicon.fetching" class="fa fa-spinner fa-spin fa-5x"></i><section ng-show="corpus.prefs.showLexiconAsList" class="fielddb-lexicon"></section>',
     restrict: 'A',
-    transclude: false,
+    // transclude: false,
     scope: {
-      data: '=json'
+      corpus: '=json'
     },
-    link: function postLink(scope, element, attrs) {
-      if(!scope.data || !scope.data.dbname){
+    link: function postLink(scope, element) {
+      if (!scope.corpus || !scope.corpus.dbname) {
         return;
       }
-      scope.lexiconConfidenceThreshold = 10;
-      // console.log("scopedata", scope.data);
-      var firstGlosser = new Glosser({
-        dbname: scope.data.dbname
+
+      scope.corpus.status = 'Loading lexicon...';
+      try {
+        if (!scope.$$phase) {
+          scope.$digest();
+        }
+      } catch (e) {
+        console.log('Scope was already digesting, no need to do it again.');
+      }
+
+      // console.log('scopedata', scope.corpus);
+      var glosser = new FieldDB.Glosser({
+        dbname: scope.corpus.dbname
       });
-      firstGlosser.downloadPrecedenceRules(scope.data.dbname, "http://localhost:5984/" + scope.data.dbname + "/_design/lexicon/_view/morphemesPrecedenceContext?group=true", function(precedenceRelations) {
-        var utterance = firstGlosser.guessUtteranceFromMorphemes({
-          utterance: "",
-          morphemes: "Kicha-nay-wa-n punqo-ta",
-          allomorphs: "",
-          gloss: "open-DES-1OM-3SG door-ACC",
-          translation: "I feel like opening the door."
-        });
-        console.log(utterance);
-        var lexicon = LexiconFactory({
-          precedenceRelations: precedenceRelations,
-          dbname: scope.data.dbname,
-          element: document.getElementById("lexicon"),
-          dontConnectWordBoundaries: !scope.showWordBoundaries
-        });
-        scope.data.lexicon = lexicon;
-        lexicon.bindToView();
-        var renderFirstGraph = function() {
-          var glosserElement = document.getElementById("glosser");
-          glosserElement.innerHTML = "";
-          var confidenceThreshold = scope.lexiconConfidenceThreshold / 10;
-          firstGlosser.visualizePrecedenceRelationsAsForceDirectedGraph(lexicon, glosserElement, !scope.showWordBoundaries, confidenceThreshold);
-        };
-        // rerenderIfWordBoundariesChange.push(renderFirstGraph);
-        renderFirstGraph();
+      FieldDB.Lexicon.maxLexiconSize = 100;
+      var lexicon = new FieldDB.Lexicon({
+        // dbname: scope.corpus.dbname,
+        // lexicalEntriesElement: element.find('section')[1],
+        // dontConnectWordBoundaries: !scope.showWordBoundaries,
+        localDOM: document
       });
+
+      if (!scope.corpus.prefs.showGlosserAsGraph && !scope.corpus.prefs.showLexiconAsList) {
+        scope.corpus.lexicon = lexicon;
+        scope.corpus.glosser = glosser;
+      } else {
+        lexicon.fetch().then(function(entries) {
+          if (!entries.length) {
+            lexicon.popup('I downloaded your lexicon. Are you sure you have data in your ' + scope.corpus.title + ' corpus?');
+            scope.corpus.lexicon = lexicon;
+            scope.corpus.glosser = glosser;
+            return;
+          }
+          // TODO use the lexicon precedence relations instead? lexicon.fetchConnectedGraph()
+          glosser.fetch()
+            .then(
+              function(ngramSegmentations) {
+                lexicon.entryRelations = ngramSegmentations;
+                lexicon.updateConnectedGraph();
+
+                // var wordCloud = new iLanguageCloud({
+                //   orthography: 'please show me a word cloud please'
+                // });
+                // wordCloud.render();
+                // wordCloud.lexicon = lexicon;
+                // scope.corpus.wordCloud = wordCloud;
+                // lexi.updateConnectedGraph();
+
+                if (scope.corpus.prefs.showGlosserAsGraph) {
+                  lexicon.visualizeAsForceDirectedGraph({
+                    element: element.find('section')[0]
+                  });
+                }
+
+                if (scope.corpus.prefs.showLexiconAsList) {
+                  lexicon
+                    .render({
+                      lexicalEntriesElement: element.find('section')[1],
+                      // igtFields: ["orthography", "utterance", "morphemes","gloss"]
+                    });
+                }
+
+                // lexicon.status = encodeURI(lexicon.status);
+                scope.corpus.lexicon = lexicon;
+                scope.corpus.glosser = glosser;
+                window.lexicon = lexicon;
+
+                scope.corpus.status = 'Lexicon loaded.';
+                if (!scope.$$phase) {
+                  scope.$digest();
+                }
+
+                // rerenderIfWordBoundariesChange.push(scope.corpus.glosser.render);
+              },
+              function(error) {
+                console.warn('There was a problem loading the glosser ' + error.stack);
+                scope.corpus.bug('There was a problem loading the glosser ' + error.userFriendlyErrors);
+              })
+            .fail(function(exception) {
+              scope.corpus.bug('There was a problem loading the glosser. Please report this.');
+              console.warn(exception.stack);
+            });
+
+        });
+      }
+
+      // scope.corpus.glosser.render = function() {
+      //   var glosserElement = element.find('section')[0];
+      //   glosserElement.innerHTML = '';
+      //   var confidenceRange = scope.corpus.prefs.lexiconConfidenceRange || {
+      //     min: 0.5,
+      //     max: 0.9
+      //   };
+      //   lexicon.visualizePrecedenceRelationsAsForceDirectedGraph(scope.corpus.lexicon, glosserElement, false, confidenceRange);
+      // };
+
+
     }
   };
 });

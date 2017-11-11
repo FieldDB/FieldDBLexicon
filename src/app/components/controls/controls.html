@@ -1,31 +1,64 @@
+<div ng-show="corpus.lexicon.availableLexicalRelations.length"
+    isteven-multi-select
+    input-model="corpus.lexicon.availableLexicalRelations"
+    output-model="corpus.prefs.showRelations"
+    button-label="icon name"
+    item-label="icon name maker count"
+    tick-property="ticked"
+>
+</div>
 
-<label class="">
-  Re-train:
+<label class="topcoat-label">
 </label>
-<button id="refreshButton" class="fa fa-refresh"></button>
+<button ng-click="corpus.retrainLexicon()" class="topcoat-button--large "><i class="fa fa-refresh"></i> Re-train</button>
 
+<label class="topcoat" title="Lexicon entries beyond this limit will not be shown">Max lexicon size: {{corpus.prefs.maxLexiconSize}} </label>
+<label class="topcoat" title="Lexicon entries beyond this limit will not be shown">
+    <input ng-model="corpus.prefs.maxLexiconSize" type="range" min="100" max="40000" class="topcoat-range" step="100">
+</label>
 
-<label class="">
+<label class="topcoat-label">
   Auto save and Re-train on edits:
 </label>
-<input type="checkbox" id="autoSaveAndReTrain" class="switch"/>
-
-
-<label class="">
-  Precedence Graph:
+<label class="topcoat-switch">
+    <input type="checkbox" ng-model="corpus.prefs.autoSaveAndReTrain" class="topcoat-switch__input">
+    <div class="topcoat-switch__toggle">
+    </div>
 </label>
-<input type="checkbox" id="showGlosserAsGraph" checked class="switch"/>
 
-<label class="">
-  Lexicon Node List:
+<label class="topcoat-label">
+    Precedence Graph:
 </label>
-<input type="checkbox" id="showLexiconAsList" checked class="switch"/>
-
-<label class="" title="This can help see the linear/template order of morphemes, rather than which morphemes are over-represented in the corpus.">
-  Graph Word Boundaries:
+<label class="topcoat-switch">
+    <input type="checkbox" ng-model="corpus.prefs.showGlosserAsGraph" class="topcoat-switch__input">
+    <div class="topcoat-switch__toggle">
+    </div>
 </label>
-<input type="checkbox" id="graphWordBoundaries" class="switch"/>
 
+<label class="topcoat-label">
+    Lexicon Node List:
+</label>
+<label class="topcoat-switch">
+    <input type="checkbox" ng-model="corpus.prefs.showLexiconAsList" class="topcoat-switch__input">
+    <div class="topcoat-switch__toggle">
+    </div>
+</label>
 
-<label class="topcoat" title="Lexicon nodes below the threshold wont be shown">Confidence cut-off:</label>
-<input id="lexiconConfidenceThreshold" type="range" min="1" max="10" value="5"/>
+<label class="topcoat-label" title="This can help see the linear/template order of morphemes, rather than which morphemes are over-represented in the corpus.">
+    Graph Word Boundaries:
+</label>
+<label class="topcoat-switch">
+    <input type="checkbox" ng-model="corpus.prefs.graphWordBoundaries" class="topcoat-switch__input">
+    <div class="topcoat-switch__toggle">
+    </div>
+</label>
+
+<label class="topcoat" title="Lexicon nodes below the threshold wont be shown">Confidence cut-off min: {{corpus.prefs.showLexiconConfidenceRange.min}}</label>
+<label class="topcoat" title="Lexicon nodes below the threshold wont be shown">
+    <input ng-model="corpus.prefs.showLexiconConfidenceRange.min" type="range" min="0" max="1" class="topcoat-range" step="0.01">
+</label>
+<label class="topcoat" title="Lexicon nodes above the threshold wont be shown">max: {{corpus.prefs.showLexiconConfidenceRange.max}}</label>
+<label class="topcoat" title="Lexicon nodes above the threshold wont be shown">
+    <input ng-model="corpus.prefs.showLexiconConfidenceRange.max" type="range" min="0" max="1" class="topcoat-range" step="0.01">
+</label>
+

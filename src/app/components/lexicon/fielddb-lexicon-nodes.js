@@ -6,9 +6,9 @@ angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconNodes', func
     restrict: 'A',
     transclude: false,
     scope: {
-      data: '=json'
+      lexicon: '=json'
     },
-    link: function postLink(scope, element, attrs) {
+    link: function postLink() {
       // element.text('this is the fielddbLexiconNodes directive');
     }
   };

@@ -4,11 +4,11 @@ angular.module('fielddbLexiconAngularApp').directive('fielddbLexiconControls', f
   return {
     templateUrl: 'app/components/controls/controls.html',
     restrict: 'A',
-    transclude: false,
-    scope: {
-      data: '=json'
-    },
-    link: function postLink(scope, element, attrs) {
+    // transclude: false,
+    // scope: {
+    //   // corpus: '=json'
+    // },
+    link: function postLink() {
       // element.text('this is the fielddbLexiconControls directive');
     }
   };
