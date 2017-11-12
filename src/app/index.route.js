@@ -1,7 +1,7 @@
 (function() {
   'use strict';
   /* globals FieldDB */
-  
+
   var routeConfig = function($stateProvider, $urlRouterProvider) {
 
     var passStateParamsController = function($stateParams) {
@@ -37,12 +37,12 @@
         templateUrl: 'app/main/lexicon-browser.html',
         controller: passStateParamsController
       });
-    $stateProvider
-      .state('faq', {
-        url: '^/faq',
-        templateUrl: 'app/components/faq/faq.html'
-      });
-    $urlRouterProvider.otherwise('/chuj/shared/lexicon');
+    // $stateProvider
+    //   .state('faq', {
+    //     url: '^/faq',
+    //     templateUrl: 'app/components/faq/faq.html'
+    //   });
+    $urlRouterProvider.otherwise('/devgina/georgian_copy/lexicon');
   };
 
   angular
